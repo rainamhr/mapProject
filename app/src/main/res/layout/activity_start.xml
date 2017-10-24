@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical"
+    tools:context="com.example.queen.parproject.StartActivity">
+
+
+    <TextView
+        android:id="@+id/startActivity1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Welcome"
+        android:textColor="#FFF"
+        android:textSize="30dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="129dp" />
+
+    <Button
+        android:id="@+id/start_reg_btn"
+        android:textSize="12sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#ffffff"
+        android:text="Need a new account?"
+        android:textColor="@color/colorPrimary"
+        android:layout_above="@+id/start_login_btn"
+        android:layout_alignStart="@+id/start_login_btn"
+        android:layout_alignEnd="@+id/start_login_btn" />
+
+    <Button
+        android:id="@+id/start_login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:text="Already have account?"
+        android:textColor="#fffefe"
+        android:textSize="12sp"
+        android:layout_above="@+id/signinbtn"
+        android:layout_alignStart="@+id/signinbtn"
+        android:layout_alignEnd="@+id/signinbtn" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/signinbtn"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:textColor="#fffefe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="72dp" />
+
+
+</RelativeLayout>

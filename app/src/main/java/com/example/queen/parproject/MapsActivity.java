@@ -90,7 +90,7 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
         //toolbar set
         mtoolbar = (Toolbar) findViewById(R.id.map_page_toolbar);
         setSupportActionBar(mtoolbar);
-        getSupportActionBar().setTitle("Parmod Project");
+        getSupportActionBar().setTitle("Project");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //recyclerview set
@@ -132,7 +132,7 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
         };
     }
 
-    //from firebase assistant
+    //from firebase assistant && displaying users
     @Override
     public void onStart() {
         super.onStart();
@@ -180,8 +180,6 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
         });
     }
 
-
-
     @Override
     public void onStop() {
         super.onStop();
@@ -207,11 +205,8 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
         if (item.getItemId() == R.id.main_logout_button) {
             FirebaseAuth.getInstance().signOut();
         }
-
-
         return true;
     }
-
 
     @Override
     public void onLocationChanged(Location location) {
@@ -235,7 +230,12 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
 
     }
 
-    public void requestLocation() {
+    private boolean isLocationEnabled(){
+        return locationManager.isProviderEnabled(locationManager.GPS_PROVIDER) ||
+                locationManager.isProviderEnabled(locationManager.NETWORK_PROVIDER);
+    }
+
+ /*   public void requestLocation() {
         Criteria criteria = new Criteria();
         criteria.setAccuracy(Criteria.ACCURACY_FINE);
         criteria.setPowerRequirement(Criteria.POWER_HIGH);
@@ -251,12 +251,7 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
             return;
         }
         locationManager.requestLocationUpdates(provider, 5000, 5, this);
-    }
-
-    private boolean isLocationEnabled(){
-        return locationManager.isProviderEnabled(locationManager.GPS_PROVIDER) ||
-                locationManager.isProviderEnabled(locationManager.NETWORK_PROVIDER);
-    }
+    }*/
 
    /* @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     private boolean isPermissionGranted(){
@@ -271,6 +266,7 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
         }
     }*/
 
+   //showing alert when location is turned off
     private void showAlert(final int status){
         String msg, title, btnText;
         if (status==1){
@@ -340,12 +336,12 @@ public class MapsActivity extends ActionBarActivity implements OnMapReadyCallbac
         final LatLng PERTH = new LatLng(-31.952854, 115.857342);
         final LatLng WLINK = new LatLng(27.672439, 85.314113);
         final LatLng SYDNEY = new LatLng(-33.87365, 151.20689);
-        final LatLng PARMODHOME = new LatLng(27.656565, 85.314257);
+        final LatLng RANIBU = new LatLng(27.656565, 85.314257);
         mMap.addMarker(new MarkerOptions().position(MYHOME).title("Current Location").draggable(true));
         mMap.addMarker(new MarkerOptions().position(PERTH).title("Perth").draggable(true));
         mMap.addMarker(new MarkerOptions().position(WLINK).title(("Wlink")));
         mMap.addMarker(new MarkerOptions().position(SYDNEY).title(("Sydney")));
-        mMap.addMarker(new MarkerOptions().position(PARMODHOME).title(("Parmod Home")));
+        mMap.addMarker(new MarkerOptions().position(RANIBU).title(("Ranibu")));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(MYHOME,13));
     }
 }

@@ -79,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
         mlongitude = (EditText) findViewById(R.id.input_longitude);*/
         mCreateButton = (Button) findViewById(R.id.reg_create_button);
 
-        //checking format of email and password
+        //create button working process
         mCreateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

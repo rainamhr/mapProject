@@ -35,11 +35,13 @@ public class StartActivity extends AppCompatActivity implements GoogleApiClient.
 
     SignInButton login;
 
+    //for google signin
     GoogleApiClient googleApiClient;
     private static final int RC_SIGN_IN = 007;
 
     Boolean out = false;
 
+    //firebase
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListner;
 
@@ -74,6 +76,7 @@ public class StartActivity extends AppCompatActivity implements GoogleApiClient.
             }
         });
 
+        //firebase authentication and taking to main page
         mAuth = FirebaseAuth.getInstance();
         mAuthListner = new FirebaseAuth.AuthStateListener() {
 
@@ -94,6 +97,7 @@ public class StartActivity extends AppCompatActivity implements GoogleApiClient.
         };
         login = (SignInButton) findViewById(R.id.signinbtn);
 
+        //google sign in
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
                 .requestEmail()
@@ -126,7 +130,6 @@ public class StartActivity extends AppCompatActivity implements GoogleApiClient.
     public void onStart() {
         showProgressDialog();
         super.onStart();
-        FirebaseUser currentUser = mAuth.getCurrentUser();
 
         mAuth.addAuthStateListener(mAuthListner);
         hideProgressDialog();
@@ -156,7 +159,6 @@ public class StartActivity extends AppCompatActivity implements GoogleApiClient.
     }
 
     private void firebaseAuthWithGoogle(GoogleSignInAccount account) {
-
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         mAuth.signInWithCredential(credential)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
@@ -164,10 +166,6 @@ public class StartActivity extends AppCompatActivity implements GoogleApiClient.
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Log.d("success", "successful");
-                            FirebaseUser user = mAuth.getCurrentUser();
-
-                            //String added_by = user.getEmail();
-
                         } else {
                             Log.d("fail", "failed");
                             Toast.makeText(StartActivity.this, "Authentication failed.",

@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <item
-        android:id="@+id/view_user_profile"
-        android:title="View Profile" />
-    <item
-        android:id="@+id/all_users"
-        android:title="All users" />
     <item
         android:id="@+id/main_logout_button"
         android:title="Logout" />

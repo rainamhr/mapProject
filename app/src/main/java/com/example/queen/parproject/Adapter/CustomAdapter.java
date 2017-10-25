@@ -30,15 +30,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyCustomVi
     @Override
     public void onBindViewHolder(MyCustomViewHolder holder, int position) {
         User userPosition = userList.get(position);
-        holder.name.setText(userPosition.getPassword());
-
+        holder.name.setText(userPosition.getName());
     }
 
     @Override
     public int getItemCount() {
         return userList.size();
     }
-
 
     public class MyCustomViewHolder extends RecyclerView.ViewHolder {
         TextView name;
